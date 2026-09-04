@@ -1,1 +1,81 @@
-# RHA_Advogados
+# RHM Advogados — Site Oficial Completo
+
+**Site:** [thiagoandrade07.github.io/RHA_Advogados](https://thiagoandrade07.github.io/RHA_Advogados/)  
+**Repositório:** [ThiagoAndrade07/RHA_Advogados](https://github.com/ThiagoAndrade07/RHA_Advogados)
+
+Site estático em HTML, CSS e JavaScript, baseado na tela **RHM Advogados - Site Oficial Completo** do projeto **Sequential Website Content Assembler**, no Stitch.
+
+Projeto de origem: `13606967095748532257`  
+Tela de origem: `7c090c7d3e33438bbccc582b90d434a3`
+
+As fotos, a marca, a tipografia, as cores, os textos e a ordem das seções foram preservados. Foram adicionados menu móvel, navegação por âncoras, acessibilidade de teclado, diálogos para as áreas de atuação e empacotamento para o GitHub Pages. Não há dependência do MCP ou de uma chave de API para executar ou hospedar o site.
+
+## Visualizar
+
+Abra `index.html` diretamente no navegador. As imagens, as fontes e o CSS compilado já estão na pasta `assets`.
+
+Para usar um servidor local, com Node.js 22 ou superior:
+
+```sh
+npm ci
+npm run dev
+```
+
+Abra o endereço mostrado no terminal, normalmente `http://127.0.0.1:4173`. Se a porta estiver ocupada, defina a variável `PORT` antes de iniciar.
+
+## Publicar no GitHub Pages
+
+1. Crie um repositório no seu GitHub, com a branch principal chamada `main`.
+2. Envie os arquivos desta pasta, incluindo `.github/workflows/pages.yml`. Não envie `node_modules`, `.stitch` ou `dist`; eles estão no `.gitignore`.
+3. No repositório, abra **Settings → Pages → Build and deployment → Source** e selecione **GitHub Actions**.
+4. Faça um push para `main` ou, em **Actions**, execute **Publicar no GitHub Pages → Run workflow**.
+5. Aguarde a publicação. O endereço ficará disponível em **Settings → Pages** e na execução do workflow.
+
+O workflow instala as dependências, compila o CSS, verifica os arquivos e publica somente `dist/`. Os caminhos relativos funcionam tanto em `usuario.github.io` quanto em `usuario.github.io/nome-do-repositorio/`. O workflow define automaticamente a URL pública nas tags de compartilhamento e na URL canônica.
+
+Referência: [GitHub — configuração da origem de publicação](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+## Editar
+
+| Arquivo | Finalidade |
+| --- | --- |
+| `index.html` | Textos, seções, imagens e dados exibidos |
+| `tailwind.config.cjs` | Cores, fontes, espaçamentos e tipografia exportados do Stitch |
+| `src/styles.css` | Ajustes de responsividade, acessibilidade e componentes interativos |
+| `assets/app.js` | Menu, diálogos e comportamento do formulário |
+| `assets/site-config.js` | Destinos de contato, atualmente vazios |
+| `assets/` | Imagens, fontes, licenças e CSS compilado |
+| `.github/workflows/pages.yml` | Publicação automática |
+
+Após editar o HTML, as classes Tailwind ou o CSS:
+
+```sh
+npm run build
+npm run check
+```
+
+O CSS compilado em `assets/styles.css` deve ser incluído no próximo commit para manter a abertura direta de `index.html` funcionando. Para visualizar a pasta publicada, execute `npm run preview`.
+
+## Contatos e formulário
+
+**Os destinos estão desativados, conforme solicitado.** Os botões principais levam à seção de contato. Os dados visíveis vieram da tela original do Stitch; os links de e-mail não abrem um destinatário enquanto a configuração estiver vazia.
+
+O formulário original foi preservado, inclusive os campos relativos a acidentes. Ele informa que o envio está indisponível e **não envia nem armazena dados**. A seleção de conteúdos abre um aviso de disponibilidade futura, pois a tela exportada não possui artigos.
+
+Quando quiser ativar os contatos, edite `assets/site-config.js`:
+
+- `whatsapp`: telefone com código do país e DDD, usando somente números.
+- `email`: destinatário do escritório.
+- `partnerEmails`: e-mails individuais dos sócios.
+
+Com um destino válido, o formulário prepara a mensagem no WhatsApp (prioridade) ou no aplicativo de e-mail. O visitante confirma o envio no aplicativo. Não há backend nem serviço de envio automático. Atualize também os textos de contato no `index.html`, se necessário. Essas configurações são públicas: não coloque senhas ou chaves de API nesse arquivo.
+
+## Arquivos de origem e licenças
+
+Os arquivos temporários de referência do Stitch ficam em `.stitch/` e não entram no Git nem na publicação. As dez imagens foram exportadas da tela fornecida pelo usuário; os direitos dessas imagens e da marca permanecem com seus respectivos titulares. Não foram usadas fotos do projeto incorreto.
+
+As fontes Hanken Grotesk e Libre Caslon Text são distribuídas sob SIL Open Font License. Os ícones Material Symbols usam a licença fornecida pelo repositório Google Material Design Icons. Os textos de licença estão em `assets/fonts/`.
+
+## Publicar em outra hospedagem estática
+
+Execute `npm run build` e envie o conteúdo de `dist/` à hospedagem. Para gerar metadados com a URL final, configure `SITE_URL` durante o build. O site não exige servidor Node.js em produção.
