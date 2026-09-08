@@ -16,6 +16,9 @@ assert(!html.includes('cdn.tailwindcss.com'), 'Tailwind de desenvolvimento prese
 assert(!html.includes('mailto:'), 'Contato com destino ativado antes da configuração');
 assert(!html.includes('AQ.Ab'), 'Credencial não deve estar no site');
 assert(html.includes('hero-equipe.png'), 'Imagem principal ausente');
+assert(html.includes('id="prejuizo"') && html.includes('placeholder="Ex.: R$ 5 mil a R$ 20 mil'), 'Campo livre de prejuízo ausente');
+assert.equal((html.match(/name="Veículos envolvidos"/g) || []).length, 7, 'Opções de veículos incompletas');
+assert.equal((html.match(/type="radio"/g) || []).length, 6, 'Opções de feridos ou seguro incompletas');
 const css = await readFile(path.join(root, 'assets/fonts.css'), 'utf8');
 for (const [, font] of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) await access(path.join(root, 'assets', font));
 const built = await readFile(path.join(root, 'dist/index.html'), 'utf8');

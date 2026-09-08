@@ -23,6 +23,13 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offs
 .hero-media { flex-basis: 0; flex-shrink: 1; }
 .hero-media img { object-position: center; }
 .form-notice { font-size: 14px; line-height: 1.6; color: #41484e; }
+.form-helper { margin-top: 8px; color: #59636b; font-size: 13px; line-height: 1.5; }
+.form-choice-group { min-width: 0; }
+.form-choice-options { display: flex; flex-wrap: wrap; gap: 12px; }
+.vehicle-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.form-choice { display: flex; min-height: 44px; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid rgba(84, 68, 52, .3); cursor: pointer; transition: border-color .2s, background-color .2s; }
+.form-choice:hover, .form-choice:has(input:checked) { border-color: #f39200; background: #fff8ed; }
+.form-choice input { flex: 0 0 auto; }
 .contact-status { padding: 16px; background: #fff6e8; border-left: 3px solid #f39200; font-size: 15px; line-height: 1.6; }
 .content-dialog { width: min(620px, calc(100% - 32px)); max-height: 85dvh; padding: 36px; background: #f8f9fa; color: #0b141b; border: 1px solid #54443433; }
 .content-dialog::backdrop { background: #060f16c9; }
@@ -48,6 +55,7 @@ input:focus-visible, textarea:focus-visible, select:focus-visible { outline-offs
   .text-headline-md { font-size: 32px; }
   .text-display-lg-mobile { overflow-wrap: break-word; }
   .max-w-container-max { min-width: 0; }
+  .vehicle-options { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

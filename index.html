@@ -320,21 +320,42 @@
 <label class="block text-sm font-bold text-surface-container-lowest mb-2" for="data-acidente">Qual a data do acidente?</label>
 <input class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md bg-white text-surface-container-lowest" id="data-acidente" name="Data do acidente" type="date">
 </div>
-<div class="">
-<label class="block text-sm font-bold text-surface-container-lowest mb-2" for="ferimento">Houve algum ferimento ou caso mais grave no acidente?</label>
-<textarea class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md" maxlength="2000" id="ferimento" name="Relato do acidente" placeholder="Descreva se houve vítimas, lesões ou internações decorrentes do ocorrido..." rows="3"></textarea>
+<fieldset class="form-choice-group">
+<legend class="block text-sm font-bold text-surface-container-lowest mb-3">O acidente deixou alguém ferido?</legend>
+<div class="form-choice-options" role="group">
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="O acidente deixou alguém ferido?" value="Sim"> <span>Sim</span></label>
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="O acidente deixou alguém ferido?" value="Não"> <span>Não</span></label>
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="O acidente deixou alguém ferido?" value="Não sei"> <span>Não sei</span></label>
 </div>
-<div class="">
-<label class="block text-sm font-bold text-surface-container-lowest mb-2" for="seguro">Sabe se alguma das partes do acidente possui seguro?</label>
-<div class="relative">
-<select class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md bg-white text-surface-container-lowest cursor-pointer" id="seguro" name="Seguro">
-<option value="" disabled="" selected="">Selecione uma opção</option>
-<option value="sim">Sim</option>
-<option value="nao">Não</option>
-<option value="nao-sei">Não sei informar</option>
-</select>
+</fieldset>
+<fieldset class="form-choice-group">
+<legend class="block text-sm font-bold text-surface-container-lowest mb-3">Alguém no acidente possui seguro?</legend>
+<div class="form-choice-options" role="group">
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="Alguém no acidente possui seguro?" value="Sim"> <span>Sim</span></label>
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="Alguém no acidente possui seguro?" value="Não"> <span>Não</span></label>
+<label class="form-choice"><input class="text-primary focus:ring-primary" type="radio" name="Alguém no acidente possui seguro?" value="Não sei"> <span>Não sei</span></label>
 </div>
+</fieldset>
+<div>
+<label class="block text-sm font-bold text-surface-container-lowest mb-2" for="prejuizo">Qual foi o prejuízo aproximado?</label>
+<input class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md" id="prejuizo" name="Prejuízo aproximado" placeholder="Ex.: R$ 5 mil a R$ 20 mil, R$ 20 mil a R$ 60 mil ou mais de R$ 60 mil" type="text" maxlength="120" aria-describedby="prejuizo-ajuda">
+<p class="form-helper" id="prejuizo-ajuda">Digite o valor ou a faixa aproximada do prejuízo.</p>
 </div>
+<fieldset class="form-choice-group">
+<legend class="block text-sm font-bold text-surface-container-lowest mb-2">Quais veículos estavam envolvidos no acidente?</legend>
+<p class="form-helper mt-0 mb-3" id="veiculos-ajuda">Você pode selecionar mais de uma opção.</p>
+<div class="vehicle-options" aria-describedby="veiculos-ajuda">
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Moto"> <span>Moto</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Carro"> <span>Carro</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Caminhão"> <span>Caminhão</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Pedestre"> <span>Pedestre</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Ônibus"> <span>Ônibus</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Bicicleta"> <span>Bicicleta</span></label>
+<label class="form-choice"><input class="rounded text-primary focus:ring-primary" type="checkbox" name="Veículos envolvidos" value="Outro"> <span>Outro</span></label>
+</div>
+<label class="sr-only" for="outro-veiculo">Informe outro veículo</label>
+<input class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 mt-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md" id="outro-veiculo" name="Outro veículo" placeholder="Se marcou “Outro”, informe qual veículo" type="text" maxlength="120">
+</fieldset>
 <div class="">
 <label class="block text-sm font-bold text-surface-container-lowest mb-2" for="mensagem">Mensagem adicional (opcional)</label>
 <textarea class="w-full border border-outline-variant/30 rounded-DEFAULT px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-body-md" maxlength="2000" id="mensagem" name="Mensagem" placeholder="Outras informações relevantes sobre o ocorrido..." rows="3"></textarea>
