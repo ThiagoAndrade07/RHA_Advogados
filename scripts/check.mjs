@@ -23,7 +23,7 @@ assert.equal((html.match(/data-whatsapp-cta/g) || []).length, 6, 'Botões de con
 const contactConfig = await readFile(path.join(root, 'assets/site-config.js'), 'utf8');
 const appScript = await readFile(path.join(root, 'assets/app.js'), 'utf8');
 assert(contactConfig.includes("whatsapp: '5541992031547'"), 'Número de WhatsApp ausente');
-assert(appScript.includes('initialContactMessage') && appScript.includes('Dados informados:'), 'Mensagens de WhatsApp ausentes');
+assert(appScript.includes('initialContactMessage') && appScript.includes('Dados informados:') && appScript.includes("window.open(whatsappUrl(message), '_blank'"), 'Mensagens ou abertura em nova aba ausentes');
 const css = await readFile(path.join(root, 'assets/fonts.css'), 'utf8');
 for (const [, font] of css.matchAll(/url\(['"]?([^)'"\s]+)['"]?\)/g)) await access(path.join(root, 'assets', font));
 const built = await readFile(path.join(root, 'dist/index.html'), 'utf8');

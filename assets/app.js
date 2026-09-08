@@ -74,10 +74,8 @@
   document.querySelectorAll('[data-whatsapp-cta]').forEach((link) => {
     if (!hasWhatsApp) return;
     link.href = whatsappUrl(initialContactMessage);
-    link.addEventListener('click', (event) => {
-      event.preventDefault();
-      window.location.assign(whatsappUrl(initialContactMessage));
-    });
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
   });
   if (hasWhatsApp || validEmail(config.email)) {
     document.querySelector('#form-notice').textContent = 'Ao enviar, uma mensagem com os dados preenchidos será aberta no WhatsApp para você confirmar o envio.';
@@ -100,7 +98,7 @@
     status.hidden = false;
     status.textContent = 'Confirme o envio no aplicativo que será aberto. O site não armazena seus dados.';
     if (hasWhatsApp) {
-      window.location.assign(whatsappUrl(message));
+      window.open(whatsappUrl(message), '_blank', 'noopener,noreferrer');
     } else {
       window.location.assign(`mailto:${config.email}?subject=${encodeURIComponent('Contato pelo site RHM')}&body=${encodeURIComponent(message)}`);
     }
