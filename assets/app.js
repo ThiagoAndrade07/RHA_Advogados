@@ -69,8 +69,18 @@
   const status = document.querySelector('#contact-status');
   const whatsapp = String(config.whatsapp || '').replace(/\D/g, '');
   const hasWhatsApp = /^\d{10,15}$/.test(whatsapp);
+  const initialContactMessage = 'Olá! Vim pelo site da RHM Advogados e gostaria de falar com a equipe sobre uma possível assessoria jurídica para minha empresa.';
+  const whatsappUrl = (message) => `https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`;
+  document.querySelectorAll('[data-whatsapp-cta]').forEach((link) => {
+    if (!hasWhatsApp) return;
+    link.href = whatsappUrl(initialContactMessage);
+    link.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.assign(whatsappUrl(initialContactMessage));
+    });
+  });
   if (hasWhatsApp || validEmail(config.email)) {
-    document.querySelector('#form-notice').textContent = 'Ao continuar, a mensagem será aberta no seu aplicativo de atendimento para você confirmar o envio.';
+    document.querySelector('#form-notice').textContent = 'Ao enviar, uma mensagem com os dados preenchidos será aberta no WhatsApp para você confirmar o envio.';
   }
   form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -81,11 +91,16 @@
     }
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const message = ['Contato pelo site RHM', ...Array.from(data, ([key, value]) => `${key}: ${value || 'Não informado'}`)].join('\n');
+    const message = [
+      'Olá! Vim pelo site da RHM Advogados e gostaria de solicitar um contato.',
+      '',
+      'Dados informados:',
+      ...Array.from(data, ([key, value]) => `${key}: ${value || 'Não informado'}`)
+    ].join('\n');
     status.hidden = false;
     status.textContent = 'Confirme o envio no aplicativo que será aberto. O site não armazena seus dados.';
     if (hasWhatsApp) {
-      window.location.assign(`https://wa.me/${whatsapp}?text=${encodeURIComponent(message)}`);
+      window.location.assign(whatsappUrl(message));
     } else {
       window.location.assign(`mailto:${config.email}?subject=${encodeURIComponent('Contato pelo site RHM')}&body=${encodeURIComponent(message)}`);
     }

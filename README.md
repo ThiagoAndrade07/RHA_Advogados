@@ -43,7 +43,7 @@ Referência: [GitHub — configuração da origem de publicação](https://docs.
 | `tailwind.config.cjs` | Cores, fontes, espaçamentos e tipografia exportados do Stitch |
 | `src/styles.css` | Ajustes de responsividade, acessibilidade e componentes interativos |
 | `assets/app.js` | Menu, diálogos e comportamento do formulário |
-| `assets/site-config.js` | Destinos de contato, atualmente vazios |
+| `assets/site-config.js` | Destino do WhatsApp e e-mails opcionais |
 | `assets/` | Imagens, fontes, licenças e CSS compilado |
 | `.github/workflows/pages.yml` | Publicação automática |
 
@@ -58,11 +58,11 @@ O CSS compilado em `assets/styles.css` deve ser incluído no próximo commit par
 
 ## Contatos e formulário
 
-**Os destinos estão desativados, conforme solicitado.** Os botões principais levam à seção de contato. Os dados visíveis vieram da tela original do Stitch; os links de e-mail não abrem um destinatário enquanto a configuração estiver vazia.
+Os botões “Entrar em contato” e o formulário encaminham para o WhatsApp do escritório com uma mensagem pronta. Os links de e-mail continuam sem destinatário enquanto a configuração estiver vazia.
 
-O formulário original foi preservado, inclusive os campos relativos a acidentes. Ele informa que o envio está indisponível e **não envia nem armazena dados**. A seleção de conteúdos abre um aviso de disponibilidade futura, pois a tela exportada não possui artigos.
+O formulário inclui os campos relativos a acidentes e abre o WhatsApp com os dados preenchidos. O site não armazena esses dados. A seleção de conteúdos abre um aviso de disponibilidade futura, pois a tela exportada não possui artigos.
 
-Quando quiser ativar os contatos, edite `assets/site-config.js`:
+Para trocar o destino de contato, edite `assets/site-config.js`:
 
 - `whatsapp`: telefone com código do país e DDD, usando somente números.
 - `email`: destinatário do escritório.
